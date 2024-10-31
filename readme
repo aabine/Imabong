@@ -28,15 +28,15 @@ The project code primarily consists of JavaScript functions for handling interac
 
 ### JavaScript Functions
 
-1. **updateTotal()**
-   - **Purpose**: Calculates and updates the total price based on the quantity and unit price of each item in the cart.
-   - **How it Works**: 
-     - `updateTotal()` iterates over each item’s quantity (selected by `.quantity` class).
-     - It multiplies the quantity by the item’s unit price (extracted using `.unit-price` class within each card) and adds up the values.
-     - The total is then displayed by updating the `textContent` of the `.total` element with the calculated price.
-   - **Code**:
-     ```javascript
-     function updateTotal() {
+#### 1. updateTotal()
+- **Purpose**: Calculates and updates the total price based on the quantity and unit price of each item in the cart.
+- **How it Works**: 
+  - `updateTotal()` iterates over each item's quantity (selected by `.quantity` class)
+  - It multiplies the quantity by the item's unit price (extracted using `.unit-price` class within each card) and adds up the values
+  - The total is then displayed by updating the `textContent` of the `.total` element with the calculated price
+
+```javascript
+function updateTotal() {
     let total = 0;
     const quantities = document.querySelectorAll('.quantity');
     quantities.forEach((quantity) => {
@@ -46,67 +46,68 @@ The project code primarily consists of JavaScript functions for handling interac
     const totalPrice = document.querySelector('.total');
     totalPrice.textContent = total + ' $';
 }
-     ```
+```
 
-2. **Event Listeners**:
-   Each button in the cart has an event listener to handle specific user actions, ensuring the cart is dynamic and responsive to changes.
+#### 2. Event Listeners
+Each button in the cart has an event listener to handle specific user actions, ensuring the cart is dynamic and responsive to changes.
 
-   - **Plus Button**: 
-     - **Purpose**: Increases the quantity of the corresponding item by 1.
-     - **How it Works**: When clicked, the plus button finds its associated quantity, increments it by 1, and then calls `updateTotal()` to recalculate the total price.
-     - **Code**:
-       ```javascript
-       plusButtons.forEach((button, index) => {
-           button.addEventListener('click', () => {
-               quantities[index].textContent = parseInt(quantities[index].textContent) + 1;
-               updateTotal();
-           });
-       });
-       ```
+##### Plus Button
+- **Purpose**: Increases the quantity of the corresponding item by 1.
+- **How it Works**: When clicked, the plus button finds its associated quantity, increments it by 1, and then calls `updateTotal()` to recalculate the total price.
 
-   - **Minus Button**: 
-     - **Purpose**: Decreases the item’s quantity by 1, without going below 0.
-     - **How it Works**: When clicked, the minus button finds its associated quantity, checks if it’s greater than 0, and decrements it by 1 if so. Then, it calls `updateTotal()` to reflect any changes in the total price.
-     - **Code**:
-       ```javascript
-       minusButtons.forEach((button, index) => {
-           button.addEventListener('click', () => {
-               if (parseInt(quantities[index].textContent) > 0) {
-                   quantities[index].textContent = parseInt(quantities[index].textContent) - 1;
-                   updateTotal();
-               }
-           });
-       });
-       ```
+```javascript
+plusButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        quantities[index].textContent = parseInt(quantities[index].textContent) + 1;
+        updateTotal();
+    });
+});
+```
 
-   - **Trash Button**: 
-     - **Purpose**: Removes the item from the cart.
-     - **How it Works**: When clicked, the trash button removes the entire `.card` section for the item and then calls `updateTotal()` to update the total price without the deleted item.
-     - **Code**:
-       ```javascript
-       trashButtons.forEach((button, index) => {
-           button.addEventListener('click', () => {
-               button.closest('.card').remove();
-               updateTotal();
-           });
-       });
-       ```
+##### Minus Button
+- **Purpose**: Decreases the item's quantity by 1, without going below 0.
+- **How it Works**: When clicked, the minus button finds its associated quantity, checks if it's greater than 0, and decrements it by 1 if so. Then, it calls `updateTotal()` to reflect any changes in the total price.
 
-   - **Heart Button**: 
-     - **Purpose**: Toggles the "liked" state of the item by changing the color of the heart icon.
-     - **How it Works**: When clicked, the heart button toggles the `text-danger` class on the heart icon, changing its color to red. If clicked again, it removes the red color.
-     - **Code**:
-       ```javascript
-       heartButtons.forEach((button) => {
-           button.addEventListener('click', () => {
-               button.classList.toggle('text-danger');
-           });
-       });
-       ```
+```javascript
+minusButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        if (parseInt(quantities[index].textContent) > 0) {
+            quantities[index].textContent = parseInt(quantities[index].textContent) - 1;
+            updateTotal();
+        }
+    });
+});
+```
 
-3. **Initial Calculation**
-   - **Purpose**: Sets the total price on page load based on any preset quantities or prices.
-   - **How it Works**: The `updateTotal()` function is called initially to calculate the total based on any pre-defined item quantities and prices.
+##### Trash Button
+- **Purpose**: Removes the item from the cart.
+- **How it Works**: When clicked, the trash button removes the entire `.card` section for the item and then calls `updateTotal()` to update the total price without the deleted item.
 
-   ```javascript
-   updateTotal();
+```javascript
+trashButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        button.closest('.card').remove();
+        updateTotal();
+    });
+});
+```
+
+##### Heart Button
+- **Purpose**: Toggles the "liked" state of the item by changing the color of the heart icon.
+- **How it Works**: When clicked, the heart button toggles the `text-danger` class on the heart icon, changing its color to red. If clicked again, it removes the red color.
+
+```javascript
+heartButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('text-danger');
+    });
+});
+```
+
+#### 3. Initial Calculation
+- **Purpose**: Sets the total price on page load based on any preset quantities or prices.
+- **How it Works**: The `updateTotal()` function is called initially to calculate the total based on any pre-defined item quantities and prices.
+
+```javascript
+updateTotal();
+```
