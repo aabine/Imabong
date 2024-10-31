@@ -58,6 +58,7 @@ trashButtons.forEach((button, index) => {
 
 // Add event listeners to heart buttons
 heartButtons.forEach((button) => {
+    // Toggle the color of the heart button
     button.addEventListener('click', () => {
         // Toggle the color of the heart button
         button.classList.toggle('text-danger');

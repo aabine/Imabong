@@ -1,13 +1,21 @@
 # Shopping Cart Project
 
+This project is an interactive shopping cart where users can adjust the quantity of items, remove items, and see the total price update dynamically.
 
-## Documentation
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 
-This project is an interactive shopping cart where users can:
-- Adjust the quantity of each item
-- Remove items from the cart
-- "Like" items by toggling the heart icon color
-- See the total price dynamically update based on item quantity and deletions
+## Installation
+
+To set up the project locally, follow these steps:
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/yourusername/shopping-cart.git](https://github.com/aabine/Imabong.git)
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd shopping-cart
+   ```
+3. Open the `index.html` file in your browser.
 
 ## Features
 
@@ -15,6 +23,7 @@ This project is an interactive shopping cart where users can:
 2. **Remove Item**: Users can remove items from the cart using a trash icon, and the cart updates accordingly.
 3. **Like Item**: Users can click on a heart icon to "like" an item, toggling its color to red.
 4. **Total Price Calculation**: The total price of all items in the cart updates automatically with every change.
+
 
 ## Code Structure
 
@@ -28,6 +37,7 @@ The project code primarily consists of JavaScript functions for handling interac
   - Heart (`.fa-heart`) button for liking items
 - **Quantity Display**: `.quantity` spans for each item
 - **Total Price**: `.total` element for displaying the total cart value
+
 
 ### JavaScript Functions
 
@@ -47,9 +57,10 @@ function updateTotal() {
         total += parseInt(quantity.textContent) * unitPrice;
     });
     const totalPrice = document.querySelector('.total');
-    totalPrice.textContent = total + ' $';
+    totalPrice.textContent = total + ' \n';
 }
 ```
+
 
 #### 2. Event Listeners
 Each button in the cart has an event listener to handle specific user actions, ensuring the cart is dynamic and responsive to changes.
@@ -67,6 +78,7 @@ plusButtons.forEach((button, index) => {
 });
 ```
 
+
 ##### Minus Button
 - **Purpose**: Decreases the item's quantity by 1, without going below 0.
 - **How it Works**: When clicked, the minus button finds its associated quantity, checks if it's greater than 0, and decrements it by 1 if so. Then, it calls `updateTotal()` to reflect any changes in the total price.
@@ -82,6 +94,7 @@ minusButtons.forEach((button, index) => {
 });
 ```
 
+
 ##### Trash Button
 - **Purpose**: Removes the item from the cart.
 - **How it Works**: When clicked, the trash button removes the entire `.card` section for the item and then calls `updateTotal()` to update the total price without the deleted item.
@@ -95,6 +108,7 @@ trashButtons.forEach((button, index) => {
 });
 ```
 
+
 ##### Heart Button
 - **Purpose**: Toggles the "liked" state of the item by changing the color of the heart icon.
 - **How it Works**: When clicked, the heart button toggles the `text-danger` class on the heart icon, changing its color to red. If clicked again, it removes the red color.
@@ -107,6 +121,7 @@ heartButtons.forEach((button) => {
 });
 ```
 
+
 #### 3. Initial Calculation
 - **Purpose**: Sets the total price on page load based on any preset quantities or prices.
 - **How it Works**: The `updateTotal()` function is called initially to calculate the total based on any pre-defined item quantities and prices.
@@ -114,3 +129,20 @@ heartButtons.forEach((button) => {
 ```javascript
 updateTotal();
 ```
+
+
+## Contributing
+
+If you'd like to contribute to this project, please fork the repository and submit a pull request. We welcome improvements and new features!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+For support, please open an issue on GitHub.
+
+## Feedback
+
+Your feedback is highly appreciated! Please reach out via GitHub issues.
