@@ -9,7 +9,7 @@ This project is an interactive shopping cart where users can adjust the quantity
 To set up the project locally, follow these steps:
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/yourusername/shopping-cart.git](https://github.com/aabine/Imabong.git)
+   git clone https://github.com/yourusername/shopping-cart.git
    ```
 2. Navigate to the project directory:
    ```bash
