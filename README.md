@@ -1,5 +1,8 @@
 # Shopping Cart Project
 
+
+## Documentation
+
 This project is an interactive shopping cart where users can:
 - Adjust the quantity of each item
 - Remove items from the cart
