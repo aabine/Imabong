@@ -13,7 +13,7 @@ To set up the project locally, follow these steps:
    ```
 2. Navigate to the project directory:
    ```bash
-   cd shopping-cart
+   cd imabong
    ```
 3. Open the `index.html` file in your browser.
 
